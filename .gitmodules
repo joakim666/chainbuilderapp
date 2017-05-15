@@ -1,0 +1,3 @@
+[submodule "logkit"]
+	path = logkit
+	url = https://github.com/mark-anders/logkit
