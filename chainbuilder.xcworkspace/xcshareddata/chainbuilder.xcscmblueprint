@@ -1,0 +1,19 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "956D2B21DD155C49504BB67697A67F7C5351A353" : 0,
+    "ABA0193F5C216CC3CBA0C501C7EE5E83FED1B0AA" : 0,
+    "F3F2F1B17CF5A201860F43B7AA4030254E9CF42A" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A4AB63DA-0BF0-4FC5-89F9-9BB21C68B670",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F3F2F1B17CF5A201860F43B7AA4030254E9CF42A" : "chainbuilder\/logkit\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "chainbuilder",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "chainbuilder.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+  ]
+}
