@@ -176,20 +176,6 @@
 			remoteGlobalIDString = 5566C6481ECDBD2300ECD161;
 			remoteInfo = "chainbuilder-dev";
 		};
-		55BF09C81CFDA10600A93E44 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 55BF09AB1CFDA10600A93E44 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 55BF09B21CFDA10600A93E44;
-			remoteInfo = chainbuilder;
-		};
-		55BF09D31CFDA10600A93E44 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 55BF09AB1CFDA10600A93E44 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 55BF09B21CFDA10600A93E44;
-			remoteInfo = chainbuilder;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -543,7 +529,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				55BF09C91CFDA10600A93E44 /* PBXTargetDependency */,
 				558B0C1B1EE0A6280026985A /* PBXTargetDependency */,
 			);
 			name = chainbuilderTests;
@@ -562,7 +547,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				55BF09D41CFDA10600A93E44 /* PBXTargetDependency */,
 				558B0C231EE0A62F0026985A /* PBXTargetDependency */,
 			);
 			name = chainbuilderUITests;
@@ -1052,16 +1036,6 @@
 			isa = PBXTargetDependency;
 			target = 5566C6481ECDBD2300ECD161 /* chainbuilder-dev */;
 			targetProxy = 558B0C221EE0A62F0026985A /* PBXContainerItemProxy */;
-		};
-		55BF09C91CFDA10600A93E44 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 55BF09B21CFDA10600A93E44 /* chainbuilder */;
-			targetProxy = 55BF09C81CFDA10600A93E44 /* PBXContainerItemProxy */;
-		};
-		55BF09D41CFDA10600A93E44 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 55BF09B21CFDA10600A93E44 /* chainbuilder */;
-			targetProxy = 55BF09D31CFDA10600A93E44 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
