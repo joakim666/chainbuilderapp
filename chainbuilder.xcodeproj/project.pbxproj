@@ -25,6 +25,9 @@
 		5557B7431E4DDE780044FB29 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B7421E4DDE780044FB29 /* CalendarViewController.swift */; };
 		5557B7471E51D18F0044FB29 /* SlideInWithSpringAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B7461E51D18F0044FB29 /* SlideInWithSpringAnimator.swift */; };
 		5557B7491E548A540044FB29 /* AWPercentDrivenInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B7481E548A530044FB29 /* AWPercentDrivenInteractiveTransition.swift */; };
+		555D4B3F1EF7DCBF0081A2D9 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D4B3E1EF7DCBF0081A2D9 /* ShareViewModel.swift */; };
+		555D4B461EF7DEE50081A2D9 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D4B3E1EF7DCBF0081A2D9 /* ShareViewModel.swift */; };
+		555D4B471EF7DEE60081A2D9 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D4B3E1EF7DCBF0081A2D9 /* ShareViewModel.swift */; };
 		5566C64D1ECDBD2300ECD161 /* SlideInWithSpringAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B7461E51D18F0044FB29 /* SlideInWithSpringAnimator.swift */; };
 		5566C64E1ECDBD2300ECD161 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B7421E4DDE780044FB29 /* CalendarViewController.swift */; };
 		5566C64F1ECDBD2300ECD161 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF09E61D00453300A93E44 /* DateUtils.swift */; };
@@ -233,6 +236,7 @@
 		5557B7421E4DDE780044FB29 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		5557B7461E51D18F0044FB29 /* SlideInWithSpringAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInWithSpringAnimator.swift; sourceTree = "<group>"; };
 		5557B7481E548A530044FB29 /* AWPercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWPercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
+		555D4B3E1EF7DCBF0081A2D9 /* ShareViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
 		5566C66E1ECDBD2300ECD161 /* chainbuilder-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chainbuilder-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5566C6961ED6309000ECD161 /* chainbuilder-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chainbuilder-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B4399A1E6B727E00BAFFEA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -335,6 +339,7 @@
 				5557B73B1E3D543B0044FB29 /* CurrentChainViewModel.swift */,
 				55B4399C1E71883800BAFFEA /* ChainNameViewModel.swift */,
 				55EB32F41EA77E6B00297DCB /* SlotsViewModel.swift */,
+				555D4B3E1EF7DCBF0081A2D9 /* ShareViewModel.swift */,
 			);
 			name = viewmodel;
 			sourceTree = "<group>";
@@ -929,6 +934,7 @@
 				5566C6541ECDBD2300ECD161 /* ChainViewModel.swift in Sources */,
 				5566C6551ECDBD2300ECD161 /* SlotsViewModel.swift in Sources */,
 				5566C6561ECDBD2300ECD161 /* AppDelegate.swift in Sources */,
+				555D4B461EF7DEE50081A2D9 /* ShareViewModel.swift in Sources */,
 				5566C6571ECDBD2300ECD161 /* Chain.swift in Sources */,
 				5566C6581ECDBD2300ECD161 /* CalendarViewBuilder.swift in Sources */,
 				5566C6591ECDBD2300ECD161 /* CalendarContainerViewController.swift in Sources */,
@@ -954,6 +960,7 @@
 				5566C67C1ED6309000ECD161 /* ChainViewModel.swift in Sources */,
 				5566C67D1ED6309000ECD161 /* SlotsViewModel.swift in Sources */,
 				5566C67E1ED6309000ECD161 /* AppDelegate.swift in Sources */,
+				555D4B471EF7DEE60081A2D9 /* ShareViewModel.swift in Sources */,
 				5566C67F1ED6309000ECD161 /* Chain.swift in Sources */,
 				5566C6801ED6309000ECD161 /* CalendarViewBuilder.swift in Sources */,
 				5566C6811ED6309000ECD161 /* CalendarContainerViewController.swift in Sources */,
@@ -979,6 +986,7 @@
 				5557B7171E316CBD0044FB29 /* ChainViewModel.swift in Sources */,
 				55EB32F51EA77E6B00297DCB /* SlotsViewModel.swift in Sources */,
 				55BF09B71CFDA10600A93E44 /* AppDelegate.swift in Sources */,
+				555D4B3F1EF7DCBF0081A2D9 /* ShareViewModel.swift in Sources */,
 				5557B7191E316D400044FB29 /* Chain.swift in Sources */,
 				BB2B90E9213D0578F716A81A /* CalendarViewBuilder.swift in Sources */,
 				5557B7411E4DDA590044FB29 /* CalendarContainerViewController.swift in Sources */,
