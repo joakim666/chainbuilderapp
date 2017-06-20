@@ -15,9 +15,9 @@ class ShareViewModel {
     
     let excludedActivityTypes = [UIActivityType.addToReadingList]
     
-    var shareMode = false
-    
     var chain: Chain?
+    var shareMode = false
+    var fileURL: URL?
     
     func shareChain(_ chain: Chain?) {
         shareMode = true
@@ -59,16 +59,23 @@ class ShareViewModel {
                 log.error("Failed to export csv to: \(fileURL) due to: " + error.localizedDescription)
             }
             
+            self.fileURL = fileURL
             return fileURL
         }
         else {
             log.error("Failed to create csv export file")
+            self.fileURL = nil
             return nil
         }
     }
     
     func completed() {
         shareMode = false
+        
+        // remove the created csv file, ignore errors
+        if let fileURL = self.fileURL {
+            try? FileManager.default.removeItem(at: fileURL)
+        }
     }
     
 }

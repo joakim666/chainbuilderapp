@@ -42,20 +42,21 @@ class DateUtilsTests: XCTestCase {
     }
 
     func testDaysFromStartOfWeek2() {
-        let date20160101 = makeNSDate(2016, month: 1, day: 1)
+        let date20160101 = DateUtilsTests.makeNSDate(2016, month: 1, day: 1)
 
         expect(self.dateUtils.daysFromStartOfWeek(Weekday.Monday, date: date20160101)).to(equal(4))
         expect(self.dateUtils.daysFromStartOfWeek(Weekday.Sunday, date: date20160101)).to(equal(5))
     }
 
     func testGetMonthAndYear() {
-        let date20160101 = makeNSDate(2016, month: 1, day: 1)
+        let date20160101 = DateUtilsTests.makeNSDate(2016, month: 1, day: 1)
 
         expect(self.dateUtils.monthAndYear(date20160101, locale: Locale(identifier: "en_US"))).to(equal("January 2016"))
     }
 
+    // --- Helper methods below
 
-    fileprivate func makeNSDate(_ year: Int, month: Int, day: Int) -> Date {
+    static func makeNSDate(_ year: Int, month: Int, day: Int) -> Date {
         let calendar = Calendar.current
 
         var c = DateComponents()
