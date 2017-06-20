@@ -20,7 +20,35 @@ class ShareViewModelTest: XCTestCase {
         expect(vm.sharedFileURL()).to(beNil())
         expect(vm.completed()).toNot(throwError())
     }
-    
+
+    func testExportOfEmptyChain() {
+        let vm = ShareViewModel()
+        let chain = createEmptyTestChain()
+        
+        vm.shareChain(chain)
+        
+        let shareFileURL = vm.sharedFileURL()
+        expect(shareFileURL).toNot(beNil())
+        
+        let csvData: String
+        do {
+            csvData = try String(contentsOf: shareFileURL!, encoding: .utf8)
+        }
+        catch {
+            XCTFail("Failed to read content of exported CSV file")
+            return
+        }
+        
+        expect(csvData).toNot(beNil())
+        expect(csvData).toNot(beEmpty())
+        
+        let expectedCsvString = "Marked dates\n"
+        
+        expect(csvData).to(equal(expectedCsvString))
+        
+        expect(vm.completed()).toNot(throwError())
+    }
+
     func testExport() {
         let vm = ShareViewModel()
         let chain = createTestChain()
@@ -88,4 +116,31 @@ class ShareViewModelTest: XCTestCase {
         
         return chain
     }
+    
+    func createEmptyTestChain() -> Chain {
+        var config = Realm.Configuration()
+        config.inMemoryIdentifier = "shareViewModelTest"
+        
+        let testRealm = try! Realm(configuration: config)
+        
+        let chainId = UUID().uuidString
+        
+        try! testRealm.write {
+            // chain 1
+            let chain1 = Chain()
+            chain1.id = chainId
+            chain1.name = "Tap to change 1"
+            chain1.sortOrder = 1
+            chain1.color = "dc322f"
+            testRealm.add(chain1)
+        }
+        
+        guard let chain = testRealm.object(ofType: Chain.self, forPrimaryKey: chainId) else {
+            XCTFail("Failed to find created chain")
+            return Chain()
+        }
+        
+        return chain
+    }
+
 }
