@@ -71,11 +71,9 @@ class ShareViewModel {
     
     func completed() {
         shareMode = false
-        
-        // remove the created csv file, ignore errors
-        if let fileURL = self.fileURL {
-            try? FileManager.default.removeItem(at: fileURL)
-        }
+ 
+        // Do not remove the created csv file here because if we do that, the deletion will occur before
+        // the application targeted for the share action gets a chance to read the file
     }
     
 }
