@@ -12,7 +12,7 @@ import GoogleMobileAds
 
 class OverviewController: CalendarViewController {
     
-    // stores
+    // view models
     let chainViewModel = ChainViewModel()
     
     var calendarViewBuilder = CalendarViewBuilder()

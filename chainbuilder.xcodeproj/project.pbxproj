@@ -13,6 +13,12 @@
 		5505273F1EB516DE0071C249 /* ActiveSlotIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5505273E1EB516DE0071C249 /* ActiveSlotIndicator.swift */; };
 		5510AD961EE3421B0084926E /* Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5504CC3D1EDA1A8B00C36E97 /* Info-dev.plist */; };
 		551663A61D0FFF9800187FC8 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF09E61D00453300A93E44 /* DateUtils.swift */; };
+		55479AE01EFBDE6A008061E3 /* ChainConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55479ADF1EFBDE6A008061E3 /* ChainConfigurationViewController.swift */; };
+		55479AE11EFBDE6A008061E3 /* ChainConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55479ADF1EFBDE6A008061E3 /* ChainConfigurationViewController.swift */; };
+		55479AE21EFBDE6A008061E3 /* ChainConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55479ADF1EFBDE6A008061E3 /* ChainConfigurationViewController.swift */; };
+		55479AE41F018C23008061E3 /* HSBColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55479AE31F018C23008061E3 /* HSBColorPicker.swift */; };
+		55479AE51F018C23008061E3 /* HSBColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55479AE31F018C23008061E3 /* HSBColorPicker.swift */; };
+		55479AE61F018C23008061E3 /* HSBColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55479AE31F018C23008061E3 /* HSBColorPicker.swift */; };
 		5557B7151E30E0B40044FB29 /* CurrentDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B7141E30E0B40044FB29 /* CurrentDateViewModel.swift */; };
 		5557B7171E316CBD0044FB29 /* ChainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B7161E316CBD0044FB29 /* ChainViewModel.swift */; };
 		5557B7191E316D400044FB29 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B7181E316D400044FB29 /* Chain.swift */; };
@@ -29,6 +35,9 @@
 		555D4B461EF7DEE50081A2D9 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D4B3E1EF7DCBF0081A2D9 /* ShareViewModel.swift */; };
 		555D4B471EF7DEE60081A2D9 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D4B3E1EF7DCBF0081A2D9 /* ShareViewModel.swift */; };
 		555D4B491EF935C70081A2D9 /* ShareViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D4B481EF935C70081A2D9 /* ShareViewModelTest.swift */; };
+		555D4B4C1EFB11700081A2D9 /* ChainConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D4B4B1EFB11700081A2D9 /* ChainConfigurationViewModel.swift */; };
+		555D4B4D1EFB11700081A2D9 /* ChainConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D4B4B1EFB11700081A2D9 /* ChainConfigurationViewModel.swift */; };
+		555D4B4E1EFB11700081A2D9 /* ChainConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D4B4B1EFB11700081A2D9 /* ChainConfigurationViewModel.swift */; };
 		5566C64D1ECDBD2300ECD161 /* SlideInWithSpringAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B7461E51D18F0044FB29 /* SlideInWithSpringAnimator.swift */; };
 		5566C64E1ECDBD2300ECD161 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B7421E4DDE780044FB29 /* CalendarViewController.swift */; };
 		5566C64F1ECDBD2300ECD161 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF09E61D00453300A93E44 /* DateUtils.swift */; };
@@ -225,6 +234,8 @@
 		5504CC3C1EDA1A8B00C36E97 /* Info-demo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-demo.plist"; sourceTree = "<group>"; };
 		5504CC3D1EDA1A8B00C36E97 /* Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-dev.plist"; sourceTree = "<group>"; };
 		5505273E1EB516DE0071C249 /* ActiveSlotIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveSlotIndicator.swift; sourceTree = "<group>"; };
+		55479ADF1EFBDE6A008061E3 /* ChainConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainConfigurationViewController.swift; sourceTree = "<group>"; };
+		55479AE31F018C23008061E3 /* HSBColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSBColorPicker.swift; sourceTree = "<group>"; };
 		5557B7141E30E0B40044FB29 /* CurrentDateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentDateViewModel.swift; sourceTree = "<group>"; };
 		5557B7161E316CBD0044FB29 /* ChainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainViewModel.swift; sourceTree = "<group>"; };
 		5557B7181E316D400044FB29 /* Chain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
@@ -239,6 +250,7 @@
 		5557B7481E548A530044FB29 /* AWPercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWPercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
 		555D4B3E1EF7DCBF0081A2D9 /* ShareViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
 		555D4B481EF935C70081A2D9 /* ShareViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewModelTest.swift; sourceTree = "<group>"; };
+		555D4B4B1EFB11700081A2D9 /* ChainConfigurationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainConfigurationViewModel.swift; sourceTree = "<group>"; };
 		5566C66E1ECDBD2300ECD161 /* chainbuilder-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chainbuilder-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5566C6961ED6309000ECD161 /* chainbuilder-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chainbuilder-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B4399A1E6B727E00BAFFEA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -319,6 +331,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55479AD81EFBDE09008061E3 /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				5557B7401E4DDA590044FB29 /* CalendarContainerViewController.swift */,
+				5557B7421E4DDE780044FB29 /* CalendarViewController.swift */,
+				55EB32F21EA6A91100297DCB /* OverviewController.swift */,
+				55479ADF1EFBDE6A008061E3 /* ChainConfigurationViewController.swift */,
+			);
+			name = viewcontrollers;
+			sourceTree = "<group>";
+		};
 		5557B71D1E3D3CCC0044FB29 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +365,7 @@
 				55B4399C1E71883800BAFFEA /* ChainNameViewModel.swift */,
 				55EB32F41EA77E6B00297DCB /* SlotsViewModel.swift */,
 				555D4B3E1EF7DCBF0081A2D9 /* ShareViewModel.swift */,
+				555D4B4B1EFB11700081A2D9 /* ChainConfigurationViewModel.swift */,
 			);
 			name = viewmodel;
 			sourceTree = "<group>";
@@ -387,12 +411,9 @@
 				5504CC3D1EDA1A8B00C36E97 /* Info-dev.plist */,
 				5557B73D1E3E1A3C0044FB29 /* chainbuilder.entitlements */,
 				55BF09B61CFDA10600A93E44 /* AppDelegate.swift */,
-				5557B7401E4DDA590044FB29 /* CalendarContainerViewController.swift */,
 				5505273E1EB516DE0071C249 /* ActiveSlotIndicator.swift */,
 				5557B7461E51D18F0044FB29 /* SlideInWithSpringAnimator.swift */,
 				5557B7481E548A530044FB29 /* AWPercentDrivenInteractiveTransition.swift */,
-				5557B7421E4DDE780044FB29 /* CalendarViewController.swift */,
-				55EB32F21EA6A91100297DCB /* OverviewController.swift */,
 				5557B71A1E3D366E0044FB29 /* RealmUtils.swift */,
 				55BF09BA1CFDA10600A93E44 /* Main.storyboard */,
 				55BF09BD1CFDA10600A93E44 /* Assets.xcassets */,
@@ -400,8 +421,10 @@
 				55BF09E61D00453300A93E44 /* DateUtils.swift */,
 				BB2B994CB9BE5D4362224E91 /* CalendarViewBuilder.swift */,
 				5557B73A1E3D3DC60044FB29 /* model */,
+				55479AD81EFBDE09008061E3 /* viewcontrollers */,
 				5557B7391E3D3D920044FB29 /* viewmodel */,
 				55B4399A1E6B727E00BAFFEA /* Extensions.swift */,
+				55479AE31F018C23008061E3 /* HSBColorPicker.swift */,
 			);
 			path = chainbuilder;
 			sourceTree = "<group>";
@@ -927,6 +950,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555D4B4D1EFB11700081A2D9 /* ChainConfigurationViewModel.swift in Sources */,
 				5566C64D1ECDBD2300ECD161 /* SlideInWithSpringAnimator.swift in Sources */,
 				5566C64E1ECDBD2300ECD161 /* CalendarViewController.swift in Sources */,
 				5566C64F1ECDBD2300ECD161 /* DateUtils.swift in Sources */,
@@ -939,9 +963,11 @@
 				5566C6561ECDBD2300ECD161 /* AppDelegate.swift in Sources */,
 				555D4B461EF7DEE50081A2D9 /* ShareViewModel.swift in Sources */,
 				5566C6571ECDBD2300ECD161 /* Chain.swift in Sources */,
+				55479AE11EFBDE6A008061E3 /* ChainConfigurationViewController.swift in Sources */,
 				5566C6581ECDBD2300ECD161 /* CalendarViewBuilder.swift in Sources */,
 				5566C6591ECDBD2300ECD161 /* CalendarContainerViewController.swift in Sources */,
 				5566C65A1ECDBD2300ECD161 /* CurrentChainViewModel.swift in Sources */,
+				55479AE51F018C23008061E3 /* HSBColorPicker.swift in Sources */,
 				5566C65B1ECDBD2300ECD161 /* State.swift in Sources */,
 				5566C65C1ECDBD2300ECD161 /* ChainNameViewModel.swift in Sources */,
 				5566C65D1ECDBD2300ECD161 /* OverviewController.swift in Sources */,
@@ -953,6 +979,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555D4B4E1EFB11700081A2D9 /* ChainConfigurationViewModel.swift in Sources */,
 				5566C6751ED6309000ECD161 /* SlideInWithSpringAnimator.swift in Sources */,
 				5566C6761ED6309000ECD161 /* CalendarViewController.swift in Sources */,
 				5566C6771ED6309000ECD161 /* DateUtils.swift in Sources */,
@@ -965,9 +992,11 @@
 				5566C67E1ED6309000ECD161 /* AppDelegate.swift in Sources */,
 				555D4B471EF7DEE60081A2D9 /* ShareViewModel.swift in Sources */,
 				5566C67F1ED6309000ECD161 /* Chain.swift in Sources */,
+				55479AE21EFBDE6A008061E3 /* ChainConfigurationViewController.swift in Sources */,
 				5566C6801ED6309000ECD161 /* CalendarViewBuilder.swift in Sources */,
 				5566C6811ED6309000ECD161 /* CalendarContainerViewController.swift in Sources */,
 				5566C6821ED6309000ECD161 /* CurrentChainViewModel.swift in Sources */,
+				55479AE61F018C23008061E3 /* HSBColorPicker.swift in Sources */,
 				5566C6831ED6309000ECD161 /* State.swift in Sources */,
 				5566C6841ED6309000ECD161 /* ChainNameViewModel.swift in Sources */,
 				5566C6851ED6309000ECD161 /* OverviewController.swift in Sources */,
@@ -979,6 +1008,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				555D4B4C1EFB11700081A2D9 /* ChainConfigurationViewModel.swift in Sources */,
 				5557B7471E51D18F0044FB29 /* SlideInWithSpringAnimator.swift in Sources */,
 				5557B7431E4DDE780044FB29 /* CalendarViewController.swift in Sources */,
 				551663A61D0FFF9800187FC8 /* DateUtils.swift in Sources */,
@@ -991,9 +1021,11 @@
 				55BF09B71CFDA10600A93E44 /* AppDelegate.swift in Sources */,
 				555D4B3F1EF7DCBF0081A2D9 /* ShareViewModel.swift in Sources */,
 				5557B7191E316D400044FB29 /* Chain.swift in Sources */,
+				55479AE01EFBDE6A008061E3 /* ChainConfigurationViewController.swift in Sources */,
 				BB2B90E9213D0578F716A81A /* CalendarViewBuilder.swift in Sources */,
 				5557B7411E4DDA590044FB29 /* CalendarContainerViewController.swift in Sources */,
 				5557B73C1E3D543B0044FB29 /* CurrentChainViewModel.swift in Sources */,
+				55479AE41F018C23008061E3 /* HSBColorPicker.swift in Sources */,
 				5557B73F1E3E94DB0044FB29 /* State.swift in Sources */,
 				55B4399D1E71883800BAFFEA /* ChainNameViewModel.swift in Sources */,
 				55EB32F31EA6A91100297DCB /* OverviewController.swift in Sources */,

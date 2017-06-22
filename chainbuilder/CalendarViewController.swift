@@ -23,6 +23,7 @@ class ChainViewController: CalendarViewController {
     // view models
     let chainViewModel = ChainViewModel()
     let shareViewModel = ShareViewModel()
+    let chainConfigurationViewModel = ChainConfigurationViewModel()
     
     var chain: Chain?
     
@@ -42,6 +43,7 @@ class ChainViewController: CalendarViewController {
     let tableHeader = UILabel()
     let shareButton = UIButton(type: .system)
     let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+    let configureButton = UIButton(type: .system)
     
     var calendarRows = [CalendarRow]()
 
@@ -113,6 +115,10 @@ class ChainViewController: CalendarViewController {
         shareButton.setImage(UIImage.imageFromSystemBarButton(.action), for: .normal)
         shareButton.addTarget(self, action: #selector(ChainViewController.shareButtonClicked), for: UIControlEvents.touchUpInside)
         containerView.addSubview(shareButton)
+
+        configureButton.setTitle("Edit", for: .normal)
+        configureButton.addTarget(self, action: #selector(ChainViewController.configureButtonClicked), for: UIControlEvents.touchUpInside)
+        containerView.addSubview(configureButton)
         
         if GlobalSettings.showAds {
             bannerView.adUnitID = GlobalSettings.adMobAdUnitID()
@@ -129,7 +135,7 @@ class ChainViewController: CalendarViewController {
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
     }
-
+    
     override func panLeft() -> CalendarViewController? {
         if let currentDateViewModel = self.currentDateViewModel {
             if let chain = self.chain {
@@ -154,15 +160,13 @@ class ChainViewController: CalendarViewController {
         chainNameViewModel.reset(chain?.name)
 
         self.refresh()
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
     }
     
     func confirmButtonClicked() {
         log.debug("Confirm button clicked")
         chainNameViewModel.save(chainEditTextField.text)
         
-        if let chain = chain {
+        if let chain = self.chain {
             let n = chainEditTextField.text != nil ? chainEditTextField.text! : ""
             chainViewModel.updateName(chain: chain, name: n)
         }
@@ -183,6 +187,16 @@ class ChainViewController: CalendarViewController {
 
         shareViewModel.shareChain(chain)
 
+        self.refresh()
+    }
+    
+    func configureButtonClicked() {
+        log.debug("Configure button clicked")
+        
+        if let chain = self.chain {
+            chainConfigurationViewModel.configure(chain)
+        }
+        
         self.refresh()
     }
     
@@ -260,6 +274,7 @@ class ChainViewController: CalendarViewController {
             tableContainer.addSubview(r.container)
         }
         
+        // show sharing controller if share button is pressed
         if shareViewModel.shareMode {
             if let sharedFileURL = shareViewModel.sharedFileURL() {
                 let activityViewController = UIActivityViewController(activityItems: [sharedFileURL], applicationActivities: nil)
@@ -269,6 +284,15 @@ class ChainViewController: CalendarViewController {
                     self.refresh()
                 })
             }
+        }
+        
+        // show chain configuration controller if configure button is pressed
+        if chainConfigurationViewModel.configurationMode {
+            let chainConfigurationViewController = ChainConfigurationViewController(chainConfigurationViewModel: chainConfigurationViewModel)
+            self.present(chainConfigurationViewController, animated: true, completion: {
+                // todoo self.chainConfigurationViewModel.completed()
+                self.refresh()
+            })
         }
         
         view.setNeedsLayout()
@@ -315,7 +339,9 @@ class ChainViewController: CalendarViewController {
 
         layoutCalender()
         
-        bannerView.alignAndFillWidth(align: .underCentered, relativeTo: tableContainer, padding: 10, height: 50)
+        configureButton.align(.underCentered, relativeTo: tableContainer, padding: 0, width: 50, height: 50)
+        
+        bannerView.alignAndFillWidth(align: .underCentered, relativeTo: configureButton, padding: 10, height: 50)
     }
     
     fileprivate func layoutCalender() {
