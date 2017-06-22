@@ -20,8 +20,9 @@ class CalendarViewController: UIViewController {
 
 class ChainViewController: CalendarViewController {
     
-    // stores
+    // view models
     let chainViewModel = ChainViewModel()
+    let shareViewModel = ShareViewModel()
     
     var chain: Chain?
     
@@ -39,6 +40,7 @@ class ChainViewController: CalendarViewController {
     let chainEditCancelButton = UIButton(type: .system)
     let tableContainer : UIView = UIView()
     let tableHeader = UILabel()
+    let shareButton = UIButton(type: .system)
     let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
     
     var calendarRows = [CalendarRow]()
@@ -99,15 +101,18 @@ class ChainViewController: CalendarViewController {
         chainEditCancelButton.backgroundColor = UIColor.red
         chainEditCancelButton.addTarget(self, action: #selector(ChainViewController.cancelButtonClicked), for: UIControlEvents.touchUpInside)
         chainEditContainerView.addSubview(chainEditCancelButton)
-
         containerView.addSubview(chainEditContainerView)
         
-        tableHeader.backgroundColor = UIColor.white
         tableHeader.text = currentDateViewModel?.selectedMonthName
         tableHeader.textAlignment = .center
         tableHeader.font = UIFont.boldSystemFont(ofSize: 20) // same font size as chainEditTextField
         tableHeader.textColor = UIColor.black
         containerView.addSubview(tableHeader)
+        
+        shareButton.frame.size = CGSize(width: 30, height: 30)
+        shareButton.setImage(UIImage.imageFromSystemBarButton(.action), for: .normal)
+        shareButton.addTarget(self, action: #selector(ChainViewController.shareButtonClicked), for: UIControlEvents.touchUpInside)
+        containerView.addSubview(shareButton)
         
         if GlobalSettings.showAds {
             bannerView.adUnitID = GlobalSettings.adMobAdUnitID()
@@ -163,8 +168,6 @@ class ChainViewController: CalendarViewController {
         }
         
         self.refresh()
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
     }
     
     func cancelButtonClicked() {
@@ -173,8 +176,14 @@ class ChainViewController: CalendarViewController {
         chainNameViewModel.cancel()
         
         self.refresh()
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
+    }
+    
+    func shareButtonClicked() {
+        log.debug("Share button clicked")
+
+        shareViewModel.shareChain(chain)
+
+        self.refresh()
     }
     
     func addTap() {
@@ -251,6 +260,17 @@ class ChainViewController: CalendarViewController {
             tableContainer.addSubview(r.container)
         }
         
+        if shareViewModel.shareMode {
+            if let sharedFileURL = shareViewModel.sharedFileURL() {
+                let activityViewController = UIActivityViewController(activityItems: [sharedFileURL], applicationActivities: nil)
+                activityViewController.excludedActivityTypes = shareViewModel.excludedActivityTypes
+                present(activityViewController, animated: true, completion: {
+                    self.shareViewModel.completed()
+                    self.refresh()
+                })
+            }
+        }
+        
         view.setNeedsLayout()
         view.layoutIfNeeded()
     }
@@ -263,7 +283,9 @@ class ChainViewController: CalendarViewController {
         tableContainer.backgroundColor = UIColor.white
         tableContainer.anchorInCenter(width: 315, height: 315) // 320 = 7 rows * row height (45px)
         
-        tableHeader.align(.aboveCentered, relativeTo: tableContainer, padding: 0, width: 315, height: 40)
+        tableHeader.align(.aboveCentered, relativeTo: tableContainer, padding: 0, width: 225, height: 40) // 225 = 315 - (2*45)
+        
+        shareButton.align(.toTheRightCentered, relativeTo: tableHeader, padding: 0, width: 45, height: 40)
 
         if !chainNameViewModel.editMode {
             // show the chain name

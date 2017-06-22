@@ -141,3 +141,29 @@ public extension UIDevice {
         return Model.unrecognized
     }
 }
+
+// Allows creating of system icons for use with e.g. UIButton
+extension UIImage{
+    
+    class func imageFromSystemBarButton(_ systemItem: UIBarButtonSystemItem, renderingMode:UIImageRenderingMode = .automatic)-> UIImage {
+        
+        let tempItem = UIBarButtonItem(barButtonSystemItem: systemItem, target: nil, action: nil)
+        
+        // add to toolbar and render it
+        UIToolbar().setItems([tempItem], animated: false)
+        
+        // got image from real uibutton
+        let itemView = tempItem.value(forKey: "view") as! UIView
+        
+        for view in itemView.subviews {
+            if view is UIButton {
+                let button = view as! UIButton
+                let image = button.imageView!.image!
+                image.withRenderingMode(renderingMode)
+                return image
+            }
+        }
+        
+        return UIImage()
+    }
+}
