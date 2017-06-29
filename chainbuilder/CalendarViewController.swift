@@ -194,7 +194,9 @@ class ChainViewController: CalendarViewController {
         log.debug("Configure button clicked")
         
         if let chain = self.chain {
-            chainConfigurationViewModel.configure(chain)
+            chainConfigurationViewModel.configure(chain) {
+                self.refresh()
+            }
         }
         
         self.refresh()

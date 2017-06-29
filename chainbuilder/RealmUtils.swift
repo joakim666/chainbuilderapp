@@ -18,7 +18,7 @@ class RealmUtils {
             config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("demo.realm")
         }
 
-        config.schemaVersion = 1
+        config.schemaVersion = 2
         
         config.migrationBlock = { migration, oldSchemaVersion in
             
@@ -45,6 +45,9 @@ class RealmUtils {
                         }
                         newObject!["color"] = "2e5cdc" // change to blue color
                     }
+                }
+                if oldSchemaVersion >= 1 && oldSchemaVersion < 2 {
+                    newObject!["startDateEnabled"] = false
                 }
             }
         }

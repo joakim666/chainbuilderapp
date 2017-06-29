@@ -14,10 +14,12 @@ class ChainDate : Object {
 }
 
 class Chain : Object {
-    dynamic var id: String?         // unique uuid
-    dynamic var name: String?       // name of chain displayed in the app
-    dynamic var sortOrder = 99      // determines the order in which the chains are shown
-    dynamic var color = "000000"    // the color of the chain as a rgb hex string
+    dynamic var id: String?                     // unique uuid
+    dynamic var name: String?                   // name of chain displayed in the app
+    dynamic var sortOrder = 99                  // determines the order in which the chains are shown
+    dynamic var color = "000000"                // the color of the chain as a rgb hex string
+    dynamic var startDateEnabled: Bool = false  // whether a start date is set for the chain or not
+    dynamic var startDate: Date?                // the start date if it's set
     
     let days = List<ChainDate>()
     
