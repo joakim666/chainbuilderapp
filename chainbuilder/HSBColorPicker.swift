@@ -18,10 +18,8 @@ internal protocol HSBColorPickerDelegate : NSObjectProtocol {
 class HSBColorPicker : UIView {
     
     weak internal var delegate: HSBColorPickerDelegate?
-    //let saturationExponentTop:Float = 2.0
     let saturationExponentTop:Float = 1.4
     let saturationExponentBottom:Float = 1.3
-    //let saturationExponentBottom:Float = -2.0
     
     @IBInspectable var elementSize: CGFloat = 1.0 {
         didSet {
