@@ -73,10 +73,10 @@ class ChainConfigurationViewController: UIViewController, HSBColorPickerDelegate
         
         // chain name text field
         nameTextField.borderStyle = .roundedRect
-        nameTextField.text = chainConfigurationViewModel?.chainName()
         nameTextField.textAlignment = .left
         nameTextField.font = UIFont.systemFont(ofSize: 18)
         nameTextField.autocorrectionType = .no
+        nameTextField.addTarget(self, action: #selector(ChainConfigurationViewController.nameTextFieldValueChanged), for: UIControlEvents.editingChanged)
         nameContainer.addSubview(nameTextField)
 
         // chain start date label
@@ -101,11 +101,13 @@ class ChainConfigurationViewController: UIViewController, HSBColorPickerDelegate
         startDateContainer.addSubview(startDateDescription)
         
         // chain start date switch
-        startDateSwitch.isOn = false
+        startDateSwitch.addTarget(self, action: #selector(ChainConfigurationViewController.startDateSwitchValueChanged), for: UIControlEvents.valueChanged)
         startDateContainer.addSubview(startDateSwitch)
         
         // chain start date picker
         startDatePicker.datePickerMode = UIDatePickerMode.date
+        startDatePicker.maximumDate = Date()
+        startDatePicker.addTarget(self, action: #selector(ChainConfigurationViewController.startDatePickerValueChanged), for: UIControlEvents.valueChanged)
         startDateContainer.addSubview(startDatePicker)
         
         // color label
@@ -123,11 +125,7 @@ class ChainConfigurationViewController: UIViewController, HSBColorPickerDelegate
         colorContainer.addSubview(currentColorLabel)
         
         // current color
-        if let cfg = chainConfigurationViewModel {
-            if let chain = cfg.chain {
-                currentColor.backgroundColor = UIColor(hexString: chain.color)
-            }
-        }
+        currentColor.backgroundColor = chainConfigurationViewModel?.color
         colorContainer.addSubview(currentColor)
         
         // color picker
@@ -142,20 +140,60 @@ class ChainConfigurationViewController: UIViewController, HSBColorPickerDelegate
         self.refresh()
     }
 
-    // TODO refactor
+    // delegate callback from the color picker
     func HSBColorColorPickerTouched(sender:HSBColorPicker, color:UIColor, point:CGPoint, state:UIGestureRecognizerState) {
-        log.debug("color picker: \(color)")
-        currentColor.backgroundColor = color
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
+        if isValidColor(color: color) {
+            chainConfigurationViewModel?.color = color
+            refresh()
+        }
+    }
+    
+    func nameTextFieldValueChanged() {
+        chainConfigurationViewModel?.name = nameTextField.text
+    }
+    
+    func startDateSwitchValueChanged() {
+        chainConfigurationViewModel?.startDateEnabled = startDateSwitch.isOn
+        refresh()
+    }
+    
+    func startDatePickerValueChanged() {
+        chainConfigurationViewModel?.startDate = startDatePicker.date
     }
     
     func refresh() {
         log.debug("refresh")
+
+        if let vm = chainConfigurationViewModel {
+            nameTextField.text = vm.name
+            
+            if let startDateEnabled = vm.startDateEnabled {
+                startDateSwitch.isOn = startDateEnabled
+                startDatePicker.isUserInteractionEnabled = startDateEnabled
+                startDatePicker.alpha = startDateEnabled ? 1.0 : 0.5 // dim date picker when disabled
+            }
+
+            if let startDate = vm.startDate {
+                startDatePicker.date = startDate
+            }
+            
+            currentColor.backgroundColor = vm.color
+        }
+
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
     }
     
     func dismissButtonClicked() {
         log.debug("Dismiss button clicked")
+        
+        chainConfigurationViewModel?.save()
+        
+        // call callback before doing animation so the parent ui is updated
+        if let cb = self.chainConfigurationViewModel?.callback {
+            cb()
+        }
+        
         dismiss(animated: true, completion: {})
     }
     
@@ -186,4 +224,26 @@ class ChainConfigurationViewController: UIViewController, HSBColorPickerDelegate
         dismissButton.anchorToEdge(.bottom, padding: 0, width: 100, height: 50)
     }
     
+    private func isValidColor(color: UIColor) -> Bool {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else {
+            return false
+        }
+        if red == 1.0 && green == 1.0 && blue == 1.0 {
+            return false // white is not a valid color from the color picker
+        }
+        
+        if red > 0.0 && red <= 1.0 &&
+            green > 0.0 && green <= 1.0 &&
+            blue > 0.0 && blue <= 1.0 {
+            return true
+        }
+        
+        return false
+    }
+
 }

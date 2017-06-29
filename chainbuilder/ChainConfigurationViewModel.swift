@@ -6,23 +6,80 @@
 //  Copyright © 2017 Morrdusk. All rights reserved.
 //
 
+import UIKit
+
 class ChainConfigurationViewModel {
     
     var configurationMode = false
     var chain: Chain?
+    var callback: (() -> Void)?
+
     
-    func configure(_ chain: Chain) {
-        self.chain = chain
-        self.configurationMode = true
+    var name: String?
+    var startDateEnabled: Bool?
+    var startDate: Date?
+    var color: UIColor?
+    
+    init() {
     }
     
-    func chainName() -> String {
-        if let chain = self.chain {
-            if let name = chain.name {
-                return name
+    /**
+     Configures the view model
+     
+     - Parameter chain:     The chain to configure
+     - Parameter callback:  The callback to call when the configuration action is finished (i.e. to refresh the parent ui)
+ 
+    */
+    func configure(_ chain: Chain, callback: @escaping () -> Void) {
+        self.chain = chain
+        self.callback = callback
+        self.configurationMode = true
+        
+        if let n = chain.name {
+            self.name = n
+        }
+
+        // TODO startDateEnabled and startDate from the chain
+        
+        self.startDateEnabled = chain.startDateEnabled
+        self.startDate = chain.startDate
+        
+        // Below just during testing to explicitely set a date
+        /*let calendar = Calendar.current
+        
+        var c = DateComponents()
+        c.year = 2017
+        c.month = 2
+        c.day = 10
+        
+        startDate = calendar.date(from: c)!*/
+        
+        self.color = UIColor(hexString: chain.color)
+    }
+    
+    func save() {
+        self.configurationMode = false
+        
+        guard let chain = self.chain else {
+            log.error("No chain set")
+            return
+        }
+        
+        do {
+            let realm = try RealmUtils.create()
+            try realm.write {
+                chain.name = self.name
+                if let startDateEnabled = self.startDateEnabled {
+                    chain.startDateEnabled = startDateEnabled
+                }
+                chain.startDate = self.startDate
+                if let color = self.color {
+                    chain.color = color.toHexString()
+                }
             }
         }
-        log.warning("Could not get chain name")
-        return ""
+        catch {
+            log.error("Failed to modify chain: \(error.localizedDescription))")
+        }
     }
 }
