@@ -106,12 +106,12 @@ class OverviewController: CalendarViewController {
         
         // create and add new subviews
         if let currentDateViewModel = self.currentDateViewModel {
-            var chainsToShow = [(dates: [Date], color: String)]()
+            var chainsToShow = [(dates: [Date], color: String, startDate: Date?)]()
             var chainLabels = [(color: String, name: String)]()
             
             if let chains = chainViewModel.chains() {
                 for chain in chains {
-                    chainsToShow.append((chainViewModel.dates(chainId: chain.id), chain.color))
+                    chainsToShow.append((chainViewModel.dates(chainId: chain.id), chain.color, nil))
                     chainLabels.append((chain.color, (chain.name)!)) // TODO fix !
                 }
             }

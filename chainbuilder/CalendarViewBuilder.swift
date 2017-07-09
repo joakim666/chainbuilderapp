@@ -120,10 +120,11 @@ class CalendarViewBuilder {
         - date:  The date for the month to show. Can not be empty.
         - today: The today date so that day can be highlighted
         - chainsToShow: a tuple array containing the chains to show, zero or more chains are supported
-            - dates: The dates that have been selected, i.e. tapped on earlier. Can not be empty but can be an empty array.
-            - color: The color to use when highlightning the selected days.
+            - dates:    The dates that have been selected, i.e. tapped on earlier. Can not be empty but can be an empty array.
+            - color:    The color to use when highlightning the selected days.
+            - startDay: The optional start date for this chain, days prior to the start day will not be displayed
     */
-    func createRows(_ date: Date, today: Date, chainsToShow: [(dates: [Date], color: String)]) -> [CalendarRow]? {
+    func createRows(_ date: Date, today: Date, chainsToShow: [(dates: [Date], color: String, startDate: Date?)]) -> [CalendarRow]? {
         guard let startWeekday = dateUtils.daysFromStartOfWeekForFirstOfMonth(date) else {
             log.error("Failed to determine starting weekday for date \(date)")
             return nil
@@ -182,8 +183,20 @@ class CalendarViewBuilder {
                             dayView.tick(UIColor.init(hexString: chainsToShow[i].color), position: i, total: chainsToShow.count)
                         }
                     }
-                    c.days.append(dayView)
-                    c.container.addSubview(dayView)
+                    
+                    // check if showing only one chain and that chain has a start date set which is after the current day
+                    // if so, don't show the current day
+                    if chainsToShow.count == 1 &&
+                        chainsToShow.first?.startDate != nil &&
+                        currentDate.compare((chainsToShow.first?.startDate)!) == ComparisonResult.orderedAscending {
+                            let dayView = DayView() {}
+                            c.days.append(dayView)
+                            c.container.addSubview(dayView)
+                    }
+                    else {
+                        c.days.append(dayView)
+                        c.container.addSubview(dayView)
+                    }
                 }
                 else {
                     // day in next month
