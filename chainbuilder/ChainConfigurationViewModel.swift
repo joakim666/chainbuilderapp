@@ -39,20 +39,8 @@ class ChainConfigurationViewModel {
             self.name = n
         }
 
-        // TODO startDateEnabled and startDate from the chain
-        
         self.startDateEnabled = chain.startDateEnabled
         self.startDate = chain.startDate
-        
-        // Below just during testing to explicitely set a date
-        /*let calendar = Calendar.current
-        
-        var c = DateComponents()
-        c.year = 2017
-        c.month = 2
-        c.day = 10
-        
-        startDate = calendar.date(from: c)!*/
         
         self.color = UIColor(hexString: chain.color)
     }
