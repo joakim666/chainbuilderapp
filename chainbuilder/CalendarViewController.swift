@@ -29,16 +29,9 @@ class ChainViewController: CalendarViewController {
     
     var calendarViewBuilder = CalendarViewBuilder()
     
-    // view model
-    let chainNameViewModel = ChainNameViewModel()
-    
     // views
     let containerView : UIView = UIView()
     let chainName = UILabel()
-    let chainEditContainerView = UIView()
-    let chainEditTextField = UITextField()
-    let chainEditConfirmButton = UIButton(type: .system)
-    let chainEditCancelButton = UIButton(type: .system)
     let tableContainer : UIView = UIView()
     let tableHeader = UILabel()
     let shareButton = UIButton(type: .system)
@@ -78,33 +71,8 @@ class ChainViewController: CalendarViewController {
         chainName.textAlignment = .center
         chainName.font = UIFont.boldSystemFont(ofSize: 32)
         chainName.textColor = UIColor.black
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ChainViewController.chainNameClicked))
-        tapGesture.numberOfTapsRequired = 1
-        chainName.isUserInteractionEnabled = true
-        chainName.addGestureRecognizer(tapGesture)
         containerView.addSubview(chainName)
 
-        // text field
-        chainEditTextField.borderStyle = .roundedRect
-        chainEditTextField.text = chainNameViewModel.name
-        chainEditTextField.textAlignment = .center
-        chainEditTextField.font = UIFont.boldSystemFont(ofSize: 20) // same font size as tableHeader
-        chainEditTextField.autocorrectionType = .no
-        chainEditContainerView.addSubview(chainEditTextField)
-        
-        // confirm button
-        chainEditConfirmButton.setTitle("Save", for: .normal)
-        chainEditConfirmButton.backgroundColor = UIColor.green
-        chainEditConfirmButton.addTarget(self, action: #selector(ChainViewController.confirmButtonClicked), for: UIControlEvents.touchUpInside)
-        chainEditContainerView.addSubview(chainEditConfirmButton)
-        
-        // cancel button
-        chainEditCancelButton.setTitle("Cancel", for: .normal)
-        chainEditCancelButton.backgroundColor = UIColor.red
-        chainEditCancelButton.addTarget(self, action: #selector(ChainViewController.cancelButtonClicked), for: UIControlEvents.touchUpInside)
-        chainEditContainerView.addSubview(chainEditCancelButton)
-        containerView.addSubview(chainEditContainerView)
-        
         tableHeader.text = currentDateViewModel?.selectedMonthName
         tableHeader.textAlignment = .center
         tableHeader.font = UIFont.boldSystemFont(ofSize: 20) // same font size as chainEditTextField
@@ -158,34 +126,6 @@ class ChainViewController: CalendarViewController {
             }
         }
         return nil
-    }
-    
-    func chainNameClicked() {
-        log.debug("chainNameClicked")
-        
-        chainNameViewModel.reset(chain?.name)
-
-        self.refresh()
-    }
-    
-    func confirmButtonClicked() {
-        log.debug("Confirm button clicked")
-        chainNameViewModel.save(chainEditTextField.text)
-        
-        if let chain = self.chain {
-            let n = chainEditTextField.text != nil ? chainEditTextField.text! : ""
-            chainViewModel.updateName(chain: chain, name: n)
-        }
-        
-        self.refresh()
-    }
-    
-    func cancelButtonClicked() {
-        log.debug("Cancel button clicked")
-
-        chainNameViewModel.cancel()
-        
-        self.refresh()
     }
     
     func shareButtonClicked() {
@@ -268,16 +208,6 @@ class ChainViewController: CalendarViewController {
         }
         
         chainName.text = chain?.name
-        chainEditTextField.text = chainNameViewModel.name
-
-        if chainNameViewModel.editMode {
-            // set focus to the textfield
-            chainEditTextField.becomeFirstResponder()
-        }
-        else {
-            // remove focus from textfield as it's not visible. Hence, remove the keyboard
-            chainEditTextField.resignFirstResponder()
-        }
         
         for r in calendarRows {
             tableContainer.addSubview(r.container)
@@ -320,31 +250,11 @@ class ChainViewController: CalendarViewController {
         
         shareButton.align(.toTheRightCentered, relativeTo: tableHeader, padding: 0, width: 45, height: 40)
 
-        if !chainNameViewModel.editMode {
-            // show the chain name
-            chainName.isHidden = false
-            tableHeader.isHidden = false
-            tableContainer.isHidden = false
-            chainEditContainerView.isHidden = true
+        chainName.isHidden = false
+        tableHeader.isHidden = false
+        tableContainer.isHidden = false
             
-            chainName.align(.aboveCentered, relativeTo: tableHeader, padding: 0, width: 315, height: 40)
-        }
-        else {
-            // show the text field and confirm and cancel buttons so the name can be changed
-            chainName.isHidden = true
-            tableHeader.isHidden = true
-            tableContainer.isHidden = true
-            chainEditContainerView.isHidden = false
-            
-            // the container
-            chainEditContainerView.anchorAndFillEdge(.top, xPad: 0, yPad: 0, otherSize: 110) // 110 = 55 + 5 + 50
-
-            // textfield
-            chainEditTextField.anchorAndFillEdge(.top, xPad: 0, yPad: 0, otherSize: 55)
-            
-            // confirm and cancel
-            chainEditContainerView.groupAndAlign(group: .horizontal, andAlign: .underCentered, views: [chainEditCancelButton, chainEditConfirmButton], relativeTo: chainEditTextField, padding: 5, width: chainEditContainerView.width/2.0, height: 50)
-        }
+        chainName.align(.aboveCentered, relativeTo: tableHeader, padding: 0, width: 315, height: 40)
 
         layoutCalender()
         

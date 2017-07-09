@@ -53,7 +53,6 @@
 		5566C6591ECDBD2300ECD161 /* CalendarContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B7401E4DDA590044FB29 /* CalendarContainerViewController.swift */; };
 		5566C65A1ECDBD2300ECD161 /* CurrentChainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B73B1E3D543B0044FB29 /* CurrentChainViewModel.swift */; };
 		5566C65B1ECDBD2300ECD161 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B73E1E3E94DB0044FB29 /* State.swift */; };
-		5566C65C1ECDBD2300ECD161 /* ChainNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B4399C1E71883800BAFFEA /* ChainNameViewModel.swift */; };
 		5566C65D1ECDBD2300ECD161 /* OverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB32F21EA6A91100297DCB /* OverviewController.swift */; };
 		5566C65E1ECDBD2300ECD161 /* RealmUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B71A1E3D366E0044FB29 /* RealmUtils.swift */; };
 		5566C6601ECDBD2300ECD161 /* LogKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5557B72B1E3D3CCC0044FB29 /* LogKit.framework */; };
@@ -76,7 +75,6 @@
 		5566C6811ED6309000ECD161 /* CalendarContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B7401E4DDA590044FB29 /* CalendarContainerViewController.swift */; };
 		5566C6821ED6309000ECD161 /* CurrentChainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B73B1E3D543B0044FB29 /* CurrentChainViewModel.swift */; };
 		5566C6831ED6309000ECD161 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B73E1E3E94DB0044FB29 /* State.swift */; };
-		5566C6841ED6309000ECD161 /* ChainNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B4399C1E71883800BAFFEA /* ChainNameViewModel.swift */; };
 		5566C6851ED6309000ECD161 /* OverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB32F21EA6A91100297DCB /* OverviewController.swift */; };
 		5566C6861ED6309000ECD161 /* RealmUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557B71A1E3D366E0044FB29 /* RealmUtils.swift */; };
 		5566C6881ED6309000ECD161 /* LogKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5557B72B1E3D3CCC0044FB29 /* LogKit.framework */; };
@@ -88,7 +86,6 @@
 		55951F7F1EE2194B00AB33D1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55BF09CD1CFDA10600A93E44 /* Info.plist */; };
 		55951F801EE2195100AB33D1 /* DateUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF09E81D00460B00A93E44 /* DateUtilsTest.swift */; };
 		55B4399B1E6B727E00BAFFEA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B4399A1E6B727E00BAFFEA /* Extensions.swift */; };
-		55B4399D1E71883800BAFFEA /* ChainNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B4399C1E71883800BAFFEA /* ChainNameViewModel.swift */; };
 		55BF09B71CFDA10600A93E44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF09B61CFDA10600A93E44 /* AppDelegate.swift */; };
 		55BF09BC1CFDA10600A93E44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55BF09BA1CFDA10600A93E44 /* Main.storyboard */; };
 		55BF09BE1CFDA10600A93E44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BF09BD1CFDA10600A93E44 /* Assets.xcassets */; };
@@ -254,7 +251,6 @@
 		5566C66E1ECDBD2300ECD161 /* chainbuilder-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chainbuilder-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5566C6961ED6309000ECD161 /* chainbuilder-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chainbuilder-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B4399A1E6B727E00BAFFEA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		55B4399C1E71883800BAFFEA /* ChainNameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainNameViewModel.swift; sourceTree = "<group>"; };
 		55BF09B31CFDA10600A93E44 /* chainbuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chainbuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BF09B61CFDA10600A93E44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55BF09BB1CFDA10600A93E44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -362,7 +358,6 @@
 				5557B7161E316CBD0044FB29 /* ChainViewModel.swift */,
 				5557B7141E30E0B40044FB29 /* CurrentDateViewModel.swift */,
 				5557B73B1E3D543B0044FB29 /* CurrentChainViewModel.swift */,
-				55B4399C1E71883800BAFFEA /* ChainNameViewModel.swift */,
 				55EB32F41EA77E6B00297DCB /* SlotsViewModel.swift */,
 				555D4B3E1EF7DCBF0081A2D9 /* ShareViewModel.swift */,
 				555D4B4B1EFB11700081A2D9 /* ChainConfigurationViewModel.swift */,
@@ -969,7 +964,6 @@
 				5566C65A1ECDBD2300ECD161 /* CurrentChainViewModel.swift in Sources */,
 				55479AE51F018C23008061E3 /* HSBColorPicker.swift in Sources */,
 				5566C65B1ECDBD2300ECD161 /* State.swift in Sources */,
-				5566C65C1ECDBD2300ECD161 /* ChainNameViewModel.swift in Sources */,
 				5566C65D1ECDBD2300ECD161 /* OverviewController.swift in Sources */,
 				5566C65E1ECDBD2300ECD161 /* RealmUtils.swift in Sources */,
 			);
@@ -998,7 +992,6 @@
 				5566C6821ED6309000ECD161 /* CurrentChainViewModel.swift in Sources */,
 				55479AE61F018C23008061E3 /* HSBColorPicker.swift in Sources */,
 				5566C6831ED6309000ECD161 /* State.swift in Sources */,
-				5566C6841ED6309000ECD161 /* ChainNameViewModel.swift in Sources */,
 				5566C6851ED6309000ECD161 /* OverviewController.swift in Sources */,
 				5566C6861ED6309000ECD161 /* RealmUtils.swift in Sources */,
 			);
@@ -1027,7 +1020,6 @@
 				5557B73C1E3D543B0044FB29 /* CurrentChainViewModel.swift in Sources */,
 				55479AE41F018C23008061E3 /* HSBColorPicker.swift in Sources */,
 				5557B73F1E3E94DB0044FB29 /* State.swift in Sources */,
-				55B4399D1E71883800BAFFEA /* ChainNameViewModel.swift in Sources */,
 				55EB32F31EA6A91100297DCB /* OverviewController.swift in Sources */,
 				5557B71B1E3D366E0044FB29 /* RealmUtils.swift in Sources */,
 			);
