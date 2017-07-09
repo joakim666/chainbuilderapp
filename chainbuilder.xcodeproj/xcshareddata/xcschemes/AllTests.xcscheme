@@ -20,6 +20,20 @@
                ReferencedContainer = "container:chainbuilder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "55BF09D11CFDA10600A93E44"
+               BuildableName = "chainbuilderUITests.xctest"
+               BlueprintName = "chainbuilderUITests"
+               ReferencedContainer = "container:chainbuilder.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -35,16 +49,6 @@
                BlueprintIdentifier = "55BF09C61CFDA10600A93E44"
                BuildableName = "chainbuilderTests.xctest"
                BlueprintName = "chainbuilderTests"
-               ReferencedContainer = "container:chainbuilder.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "55BF09D11CFDA10600A93E44"
-               BuildableName = "chainbuilderUITests.xctest"
-               BlueprintName = "chainbuilderUITests"
                ReferencedContainer = "container:chainbuilder.xcodeproj">
             </BuildableReference>
          </TestableReference>
