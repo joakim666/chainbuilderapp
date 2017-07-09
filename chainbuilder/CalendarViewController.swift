@@ -148,6 +148,12 @@ class ChainViewController: CalendarViewController {
     override func panRight() -> CalendarViewController? {
         if let currentDateViewModel = self.currentDateViewModel {
             if let chain = self.chain {
+                if chain.startDateEnabled, let startDate = chain.startDate {
+                    if Calendar.current.isDate(currentDateViewModel.selectedDate, equalTo: startDate, toGranularity: .month) {
+                        // start date is in the currently displayed month, if so don't allow to pan right to earlier months
+                        return nil
+                    }
+                }
                 return ChainViewController(chain: chain, currentDateViewModel: currentDateViewModel.adjustedViewModel(directon: -1))
             }
         }
@@ -253,7 +259,8 @@ class ChainViewController: CalendarViewController {
         
         // create and add new subviews
         
-        let chainsToShow: [(dates: [Date], color: String)] = [(chainViewModel.dates(chainId: chain?.id), (chain?.color)!)]
+        let startDate: Date? = self.chain?.startDateEnabled == true ? chain?.startDate : nil
+        let chainsToShow: [(dates: [Date], color: String, startDate: Date?)] = [(chainViewModel.dates(chainId: chain?.id), (chain?.color)!, startDate)]
         
         if let currentDateViewModel = self.currentDateViewModel {
             self.calendarRows = calendarViewBuilder.createRows(currentDateViewModel.selectedDate, today: Date(), chainsToShow: chainsToShow)!

@@ -225,4 +225,81 @@ class CalendarViewBuilderTest: XCTestCase {
         XCTAssertNil(rows[6].days[5].label?.text)
         XCTAssertNil(rows[6].days[6].label?.text)
     }
+    
+    func testBuildFor20160309WithStartDate() {
+        var c = DateComponents()
+        c.day = 9
+        c.month = 2
+        c.year = 2016
+        
+        let calendar = Calendar.current
+        let date20160209 = calendar.date(from: c)!
+        
+        c.day = 7
+        let date20160207 = calendar.date(from: c)!
+        
+        var chainsToShow = [(dates: [Date], color: String, startDate: Date?)]()
+        chainsToShow.append((dates: [], color: "#aaaaaa", startDate: date20160207))
+
+        
+        guard let rows = builder.createRows(date20160209, today: date20160209, chainsToShow: chainsToShow) else {
+            XCTFail()
+            return
+        }
+        
+        // header row
+        XCTAssertEqual("M", rows[0].days[0].label?.text)
+        XCTAssertEqual("T", rows[0].days[1].label?.text)
+        XCTAssertEqual("W", rows[0].days[2].label?.text)
+        XCTAssertEqual("T", rows[0].days[3].label?.text)
+        XCTAssertEqual("F", rows[0].days[4].label?.text)
+        XCTAssertEqual("S", rows[0].days[5].label?.text)
+        XCTAssertEqual("S", rows[0].days[6].label?.text)
+        
+        // week 1
+        XCTAssertNil(rows[1].days[0].label?.text) // 1st
+        XCTAssertNil(rows[1].days[1].label?.text) // 2nd
+        XCTAssertNil(rows[1].days[2].label?.text) // 3rd
+        XCTAssertNil(rows[1].days[3].label?.text) // 4th
+        XCTAssertNil(rows[1].days[4].label?.text) // 5th
+        XCTAssertNil(rows[1].days[5].label?.text) // 6th
+        XCTAssertEqual("7", rows[1].days[6].label?.text)
+        
+        // week 2
+        XCTAssertEqual("8", rows[2].days[0].label?.text)
+        XCTAssertEqual("9", rows[2].days[1].label?.text)
+        XCTAssertEqual("10", rows[2].days[2].label?.text)
+        XCTAssertEqual("11", rows[2].days[3].label?.text)
+        XCTAssertEqual("12", rows[2].days[4].label?.text)
+        XCTAssertEqual("13", rows[2].days[5].label?.text)
+        XCTAssertEqual("14", rows[2].days[6].label?.text)
+        
+        // week 3
+        XCTAssertEqual("15", rows[3].days[0].label?.text)
+        XCTAssertEqual("16", rows[3].days[1].label?.text)
+        XCTAssertEqual("17", rows[3].days[2].label?.text)
+        XCTAssertEqual("18", rows[3].days[3].label?.text)
+        XCTAssertEqual("19", rows[3].days[4].label?.text)
+        XCTAssertEqual("20", rows[3].days[5].label?.text)
+        XCTAssertEqual("21", rows[3].days[6].label?.text)
+        
+        // week 4
+        XCTAssertEqual("22", rows[4].days[0].label?.text)
+        XCTAssertEqual("23", rows[4].days[1].label?.text)
+        XCTAssertEqual("24", rows[4].days[2].label?.text)
+        XCTAssertEqual("25", rows[4].days[3].label?.text)
+        XCTAssertEqual("26", rows[4].days[4].label?.text)
+        XCTAssertEqual("27", rows[4].days[5].label?.text)
+        XCTAssertEqual("28", rows[4].days[6].label?.text)
+        
+        // week 5
+        XCTAssertEqual("29", rows[5].days[0].label?.text)
+        XCTAssertNil(rows[5].days[1].label?.text)
+        XCTAssertNil(rows[5].days[2].label?.text)
+        XCTAssertNil(rows[5].days[3].label?.text)
+        XCTAssertNil(rows[5].days[4].label?.text)
+        XCTAssertNil(rows[5].days[5].label?.text)
+        XCTAssertNil(rows[5].days[6].label?.text)
+    }
+
 }
