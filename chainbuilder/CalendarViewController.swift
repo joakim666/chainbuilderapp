@@ -35,8 +35,9 @@ class ChainViewController: CalendarViewController {
     let tableContainer : UIView = UIView()
     let tableHeader = UILabel()
     let shareButton = UIButton(type: .system)
-    let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
     let configureButton = UIButton(type: .system)
+    let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+    let fakeBannerView: UIView = UIView()
     
     var calendarRows = [CalendarRow]()
 
@@ -94,6 +95,11 @@ class ChainViewController: CalendarViewController {
             let adReq = GADRequest()
             adReq.testDevices = [kGADSimulatorID]
             bannerView.load(adReq)
+        }
+        else if GlobalSettings.demoMode == false {
+            // if not showing ads and it's not demo mode add a fake uiview to represent the space the ad would use
+            fakeBannerView.backgroundColor = UIColor.red
+            containerView.addSubview(fakeBannerView)
         }
         containerView.addSubview(bannerView)
         
@@ -229,7 +235,6 @@ class ChainViewController: CalendarViewController {
         if chainConfigurationViewModel.configurationMode {
             let chainConfigurationViewController = ChainConfigurationViewController(chainConfigurationViewModel: chainConfigurationViewModel)
             self.present(chainConfigurationViewController, animated: true, completion: {
-                // todoo self.chainConfigurationViewModel.completed()
                 self.refresh()
             })
         }
@@ -261,6 +266,9 @@ class ChainViewController: CalendarViewController {
         configureButton.align(.underCentered, relativeTo: tableContainer, padding: 0, width: 50, height: 50)
         
         bannerView.alignAndFillWidth(align: .underCentered, relativeTo: configureButton, padding: 10, height: 50)
+        if GlobalSettings.showAds == false && GlobalSettings.demoMode == false {
+            fakeBannerView.alignAndFillWidth(align: .underCentered, relativeTo: configureButton, padding: 10, height: 50)
+        }
     }
     
     fileprivate func layoutCalender() {
