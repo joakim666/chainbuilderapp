@@ -9,7 +9,7 @@
 import UIKit
 import Neon
 
-class ChainConfigurationViewController: UIViewController, HSBColorPickerDelegate {
+class ChainConfigurationViewController: UIViewController, HSBColorPickerDelegate, UITextFieldDelegate {
     
     // view model
     var chainConfigurationViewModel: ChainConfigurationViewModel?
@@ -55,16 +55,11 @@ class ChainConfigurationViewController: UIViewController, HSBColorPickerDelegate
         containerView.backgroundColor = UIColor.white
         view.addSubview(containerView)
 
-        //nameContainer.backgroundColor = UIColor.red
-        //startDateContainer.backgroundColor = UIColor.green
-        //colorContainer.backgroundColor = UIColor.blue
-        
         containerView.addSubview(nameContainer)
         containerView.addSubview(startDateContainer)
         containerView.addSubview(colorContainer)
         
         // chain name label
-        //chainNameLabel.backgroundColor = UIColor.red
         nameLabel.text = "Name"
         nameLabel.textAlignment = .left
         nameLabel.font = UIFont.boldSystemFont(ofSize: 32)
@@ -77,6 +72,7 @@ class ChainConfigurationViewController: UIViewController, HSBColorPickerDelegate
         nameTextField.font = UIFont.systemFont(ofSize: 18)
         nameTextField.autocorrectionType = .no
         nameTextField.addTarget(self, action: #selector(ChainConfigurationViewController.nameTextFieldValueChanged), for: UIControlEvents.editingChanged)
+        nameTextField.delegate = self
         nameContainer.addSubview(nameTextField)
 
         // chain start date label
@@ -137,9 +133,22 @@ class ChainConfigurationViewController: UIViewController, HSBColorPickerDelegate
         dismissButton.addTarget(self, action: #selector(ChainConfigurationViewController.dismissButtonClicked), for: UIControlEvents.touchUpInside)
         containerView.addSubview(dismissButton)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ChainConfigurationViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
         self.refresh()
     }
 
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        dismissKeyboard()
+        return true
+    }
+    
     // delegate callback from the color picker
     func HSBColorColorPickerTouched(sender:HSBColorPicker, color:UIColor, point:CGPoint, state:UIGestureRecognizerState) {
         if isValidColor(color: color) {
