@@ -17,3 +17,4 @@ $ open chainbuilder.xcworkspace
 
 Uses the [logkit](http://www.logkit.info) framework for logging. It's added as an embedded framework through a git submodule.
 
+Remember to do `git submodule update --init --recursive` after a fresh clone to get the submodule code.
