@@ -85,7 +85,7 @@ class ChainViewModel {
                 for cd in chain.days {
                     if cd.date == date {
                         log.info("Removing \(date) from index \(index)")
-                        chain.days.remove(objectAtIndex: i)
+                        chain.days.remove(at: i)
                         return
                     }
                     i += 1
