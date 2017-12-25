@@ -78,7 +78,8 @@ class ChainViewController: CalendarViewController {
         containerView.addSubview(tableHeader)
         
         shareButton.frame.size = CGSize(width: 30, height: 30)
-        shareButton.setImage(UIImage.imageFromSystemBarButton(.action), for: .normal)
+        //shareButton.setImage(UIImage.imageFromSystemBarButton(.action), for: .normal)
+        shareButton.setTitle("Share", for: .normal)
         shareButton.addTarget(self, action: #selector(ChainViewController.shareButtonClicked), for: UIControlEvents.touchUpInside)
         containerView.addSubview(shareButton)
 
