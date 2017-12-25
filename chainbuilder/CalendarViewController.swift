@@ -141,7 +141,7 @@ class ChainViewController: CalendarViewController {
     func addTap() {
         calendarViewBuilder.dayPressedCallback = { (date: Date) in
             self.handleDayPressed(date)
-            
+
             // vibrate device if possible
             switch UIDevice().type {
             case .iPhone5:
@@ -160,6 +160,12 @@ class ChainViewController: CalendarViewController {
             case .iPhone7:
                 fallthrough
             case .iPhone7plus:
+                fallthrough
+            case .iPhone8:
+                fallthrough
+            case .iPhone8plus:
+                fallthrough
+            case .iPhoneX:
                 if #available(iOS 10.0, *) {
                     let generator = UIImpactFeedbackGenerator(style: .heavy)
                     generator.prepare()
