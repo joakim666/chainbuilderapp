@@ -8,7 +8,6 @@
 
 import UIKit
 import Neon
-import GoogleMobileAds
 
 class OverviewController: CalendarViewController {
     

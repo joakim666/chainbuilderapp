@@ -8,46 +8,21 @@
 
 import UIKit
 import LogKit
-import Firebase
-import GoogleMobileAds
 
 struct GlobalSettings {
     #if DEVELOPMENT
         // DEVELOPMENT SETTINGS
         static let logPriorityLevel = LXPriorityLevel.all
-        static let showAds = false
         static let demoMode = false // if set to true use a specific demo database
     #elseif DEMO
         // DEMO SETTINGS
         static let logPriorityLevel = LXPriorityLevel.all
-        static let showAds = false
         static let demoMode = true // if set to true use a specific demo database
     #else
         // PRODUCTION SETTINGS
         static let logPriorityLevel = LXPriorityLevel.error
-        static let showAds = true
         static let demoMode = false // if set to true use a specific demo database
     #endif
-    
-    /**
-        Reads adMobApplicationID from the plist file so it can be set per environment.
-    */
-    static func adMobApplicationID() -> String {
-        if let v = Bundle.main.object(forInfoDictionaryKey: "adMobApplicationID") {
-            return v as! String
-        }
-        return ""
-    }
-    
-    /**
-        Reads adMobAdUnitID from the plist file so it can be set per environment.
-    */
-    static func adMobAdUnitID() -> String {
-        if let v = Bundle.main.object(forInfoDictionaryKey: "adMobAdUnitID") {
-            return v as! String
-        }
-        return ""
-    }
 }
 
 let log = LXLogger(endpoints: [LXConsoleEndpoint(synchronous: true, minimumPriorityLevel: GlobalSettings.logPriorityLevel)])
@@ -77,12 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.makeKeyAndVisible()
 
-        if GlobalSettings.showAds {
-            // For Admob - Use Firebase library to configure APIs
-            FirebaseApp.configure()
-            GADMobileAds.configure(withApplicationID: GlobalSettings.adMobApplicationID())
-        }
-        
         return true
     }
 

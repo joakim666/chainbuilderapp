@@ -6,7 +6,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 def available_pods
   pod 'Neon', '~> 0.4.0'
   pod 'RealmSwift', '~> 3.0.2'
-  pod 'Firebase/AdMob', '~> 4.0.0'
 end
 
 target 'chainbuilder' do

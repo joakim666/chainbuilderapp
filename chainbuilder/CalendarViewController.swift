@@ -9,7 +9,6 @@
 import UIKit
 import AudioToolbox
 import Neon
-import GoogleMobileAds
 
 class CalendarViewController: UIViewController {
     var currentDateViewModel: CurrentDateViewModel?
@@ -36,9 +35,7 @@ class ChainViewController: CalendarViewController {
     let tableHeader = UILabel()
     let shareButton = UIButton(type: .system)
     let configureButton = UIButton(type: .system)
-    let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-    let fakeBannerView: UIView = UIView()
-    
+
     var calendarRows = [CalendarRow]()
 
     required init?(coder aDecoder: NSCoder) {
@@ -88,21 +85,7 @@ class ChainViewController: CalendarViewController {
         configureButton.setTitle("Edit", for: .normal)
         configureButton.addTarget(self, action: #selector(ChainViewController.configureButtonClicked), for: UIControlEvents.touchUpInside)
         containerView.addSubview(configureButton)
-        
-        if GlobalSettings.showAds {
-            bannerView.adUnitID = GlobalSettings.adMobAdUnitID()
-            bannerView.rootViewController = self
-            let adReq = GADRequest()
-            adReq.testDevices = [kGADSimulatorID]
-            bannerView.load(adReq)
-        }
-        else if GlobalSettings.demoMode == false {
-            // if not showing ads and it's not demo mode add a fake uiview to represent the space the ad would use
-            fakeBannerView.backgroundColor = UIColor.red
-            containerView.addSubview(fakeBannerView)
-        }
-        containerView.addSubview(bannerView)
-        
+
         self.addTap()
         
         self.refresh()
@@ -264,11 +247,6 @@ class ChainViewController: CalendarViewController {
         layoutCalender()
         
         configureButton.align(.underCentered, relativeTo: tableContainer, padding: 0, width: 50, height: 50)
-        
-        bannerView.alignAndFillWidth(align: .underCentered, relativeTo: configureButton, padding: 10, height: 50)
-        if GlobalSettings.showAds == false && GlobalSettings.demoMode == false {
-            fakeBannerView.alignAndFillWidth(align: .underCentered, relativeTo: configureButton, padding: 10, height: 50)
-        }
     }
     
     fileprivate func layoutCalender() {
